@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Tags - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+    <h2>Tags</h2>
+    <div class="tag-cloud">
+    {% for tag, articles in tags|sort %}
+        <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-badge">{{ tag }} ({{ articles|count }})</a>
+    {% endfor %}
+    </div>
+{% endblock %}

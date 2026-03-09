@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Topics - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+    <h2 class="topics-heading"><i class="codicon codicon-folder-opened"></i><span class="typewriter">Categories</span></h2>
+    <ul class="listing-list">
+    {% for category, articles in categories|sort %}
+        <li><i class="codicon codicon-folder"></i><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a> ({{ articles|count }})</li>
+    {% endfor %}
+    </ul>
+
+    <h2 class="topics-heading"><i class="codicon codicon-tag"></i><span class="typewriter">Tags</span></h2>
+    <div class="tag-cloud">
+    {% for tag, articles in tags|sort %}
+        <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-badge"><i class="codicon codicon-tag"></i>{{ tag }} ({{ articles|count }})</a>
+    {% endfor %}
+    </div>
+{% endblock %}

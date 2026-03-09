@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }}{% endblock %}
+
+{% block content %}
+    {% block content_title %}{% endblock %}
+
+    {% for article in articles_page.object_list %}
+    <div class="article-card">
+        <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+        <p class="article-meta">
+            <span class="meta-date"><i class="codicon codicon-calendar"></i>{{ article.locale_date }}</span>
+            · <a href="{{ SITEURL }}/{{ article.category.url }}" class="meta-category"><i class="codicon codicon-folder"></i>{{ article.category }}</a>
+            {% if article.tags %}
+            ·
+            {% for tag in article.tags %}
+                <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-badge"><i class="codicon codicon-tag"></i>{{ tag }}</a>
+            {% endfor %}
+            {% endif %}
+        </p>
+        <div class="article-summary">{{ article.summary }}</div>
+        <p><a href="{{ SITEURL }}/{{ article.url }}" class="read-more"><span class="action-verb" data-tags="{{ article.tags|join(',') }}">Loading</span>...<i class="codicon codicon-arrow-right"></i></a></p>
+    </div>
+    {% endfor %}
+
+    {% if articles_page.has_other_pages() %}
+        {% include 'pagination.html' %}
+    {% endif %}
+{% endblock %}

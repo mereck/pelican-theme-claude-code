@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    {% block meta %}
+    <meta name="author" content="{{ AUTHOR }}">
+    <meta name="description" content="{{ SITEDESCRIPTION|default(SITENAME, true) }}">
+    {% endblock %}
+    {% block canonical %}{% endblock %}
+    {% block opengraph %}
+    <meta property="og:site_name" content="{{ SITENAME }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="{{ DEFAULT_LANG }}_US">
+    {% endblock %}
+
+    <script>
+    (function() {
+        var t = localStorage.getItem('theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+    })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@vscode/codicons/dist/codicon.css">
+
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments.css">
+    {% if FEED_ALL_ATOM %}
+    <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed">
+    {% endif %}
+    {% if FEED_ALL_RSS %}
+    <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed">
+    {% endif %}
+    <link rel="icon" href="{{ SITEURL }}/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ SITEURL }}/apple-touch-icon.png">
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.mermaid = mermaid;
+
+        var theme = document.documentElement.getAttribute('data-theme') || 'dark';
+
+        var darkVars = {
+            primaryColor: '#2e2f3a',
+            primaryBorderColor: '#d97757',
+            primaryTextColor: '#d4d4d8',
+            lineColor: '#d97757',
+            secondaryColor: '#282935',
+            tertiaryColor: '#1a1b23',
+            noteBkgColor: '#2e2f3a',
+            noteBorderColor: '#d97757',
+            actorBkg: '#2e2f3a',
+            actorBorder: '#d97757',
+            actorTextColor: '#d4d4d8',
+            activationBkgColor: '#3f3f46',
+            activationBorderColor: '#d97757',
+            signalColor: '#d97757',
+            labelBoxBkgColor: '#2e2f3a',
+            labelBoxBorderColor: '#d97757'
+        };
+
+        var lightVars = {
+            primaryColor: '#fef3c7',
+            primaryBorderColor: '#c2410c',
+            primaryTextColor: '#1c1917',
+            lineColor: '#c2410c',
+            secondaryColor: '#f5f5f4',
+            tertiaryColor: '#ffffff',
+            noteBkgColor: '#fef3c7',
+            noteBorderColor: '#c2410c',
+            actorBkg: '#fef3c7',
+            actorBorder: '#c2410c',
+            actorTextColor: '#1c1917',
+            activationBkgColor: '#e7e5e4',
+            activationBorderColor: '#c2410c',
+            signalColor: '#c2410c',
+            labelBoxBkgColor: '#fef3c7',
+            labelBoxBorderColor: '#c2410c'
+        };
+
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'base',
+            themeVariables: theme === 'dark' ? darkVars : lightVars
+        });
+
+        // Store source before rendering, then run
+        document.querySelectorAll('.mermaid').forEach(function(el) {
+            el.setAttribute('data-mermaid-source', el.textContent);
+        });
+
+        mermaid.run();
+    </script>
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="page-frame">
+        <nav class="navbar">
+            <a href="{{ SITEURL }}/" class="site-prompt">~/usewik.com</a>
+            <div class="nav-links">
+                <a href="{{ SITEURL }}/"><i class="codicon codicon-terminal"></i>home</a>
+                <a href="{{ SITEURL }}/{{ ARCHIVES_URL }}"><i class="codicon codicon-archive"></i>archives</a>
+                <a href="{{ SITEURL }}/topics/"><i class="codicon codicon-symbol-misc"></i>topics</a>
+                {% for p in pages %}
+                <a href="{{ SITEURL }}/{{ p.url }}"><i class="codicon codicon-person"></i>{{ p.title|lower }}</a>
+                {% endfor %}
+            </div>
+            <div class="nav-spacer"></div>
+            <button id="theme-toggle" aria-label="Toggle theme"><i class="codicon codicon-color-mode"></i></button>
+        </nav>
+
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="site-footer">
+            {% block footer %}
+            <p>&copy; {{ COPYRIGHT_YEAR }} {{ COPYRIGHT_NAME }}
+            {% if CC_LICENSE %}
+                &mdash; <a href="https://creativecommons.org/licenses/{{ CC_LICENSE.slug }}/{{ CC_LICENSE.version }}/"
+                   rel="license">{{ CC_LICENSE.name }} {{ CC_LICENSE.version }}</a>
+            {% endif %}
+            </p>
+            <p class="powered-by">Powered by <a href="https://getpelican.com/" rel="nofollow">Pelican</a>{% if FEED_ALL_ATOM %} · <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}"><i class="codicon codicon-rss"></i>Atom Feed</a>{% endif %}</p>
+            {% endblock footer %}
+        </footer>
+    </div>
+
+    <script src="{{ SITEURL }}/theme/js/theme-toggle.js" defer></script>
+</body>
+</html>
