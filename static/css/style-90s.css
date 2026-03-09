@@ -1,0 +1,465 @@
+/* ============================================================
+   style-90s.css — 90s theme overlay for CC markup
+   Loaded as a disabled stylesheet; toggled on by theme picker.
+   Hides codicons, animations, action verbs; adds dithered bg,
+   outset borders, Tahoma, teal palette.
+   ============================================================ */
+
+/* --- Variables --- */
+
+:root {
+    --bg-primary: #d4d0c8;
+    --bg-content: #ffffff;
+    --bg-navbar: #c0c0c0;
+    --text-primary: #000000;
+    --text-secondary: #555;
+    --link-color: #006666;
+    --link-visited: #005050;
+    --link-hover: #008080;
+    --accent-teal: #008080;
+    --accent-teal-light: #e0f0f0;
+    --accent-teal-dark: #006060;
+    --border-light: #ffffff;
+    --border-dark: #808080;
+    --border-darker: #404040;
+    --code-bg: #f5f5f5;
+    --bg-body: var(--bg-primary);
+    --bg-surface: var(--bg-content);
+    --bg-code: var(--code-bg);
+    --text-muted: #888;
+    --accent: var(--accent-teal);
+    --accent-hover: var(--accent-teal-dark);
+    --accent-muted: var(--accent-teal-light);
+    --accent-purple: var(--accent-teal);
+    --accent-cyan: var(--accent-teal-dark);
+    --accent-green: var(--accent-teal);
+    --accent-amber: #996600;
+    --border-subtle: #ccc;
+    --border-strong: #999;
+    --tag-bg: var(--accent-teal);
+    --tag-border: #00a0a0;
+    --tag-text: #ffffff;
+    --table-header-bg: var(--accent-teal);
+    --table-hover-bg: var(--accent-teal-light);
+}
+
+/* Kill light-mode variables — 90s is single-mode */
+[data-theme="light"] {
+    --bg-primary: #d4d0c8;
+    --bg-content: #ffffff;
+    --bg-navbar: #c0c0c0;
+    --text-primary: #000000;
+    --text-secondary: #555;
+    --link-color: #006666;
+    --link-visited: #005050;
+    --link-hover: #008080;
+    --accent-teal: #008080;
+    --accent-teal-light: #e0f0f0;
+    --accent-teal-dark: #006060;
+    --code-bg: #f5f5f5;
+    --bg-body: #d4d0c8;
+    --bg-surface: #ffffff;
+    --bg-code: #f5f5f5;
+    --text-muted: #888;
+    --accent: #008080;
+    --accent-hover: #006060;
+    --accent-muted: #e0f0f0;
+    --accent-purple: #008080;
+    --accent-cyan: #006060;
+    --accent-green: #008080;
+    --accent-amber: #996600;
+    --border-subtle: #ccc;
+    --border-strong: #999;
+    --tag-bg: #008080;
+    --tag-border: #00a0a0;
+    --tag-text: #ffffff;
+    --table-header-bg: #008080;
+    --table-hover-bg: #e0f0f0;
+}
+
+/* --- Hide all codicons --- */
+
+.codicon {
+    display: none !important;
+}
+
+/* --- Kill cursor & animations --- */
+
+.site-prompt::after {
+    display: none !important;
+}
+
+.typewriter-cursor {
+    display: none !important;
+}
+
+*, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* --- Hide dark/light toggle (90s is single-mode) --- */
+
+#theme-toggle {
+    display: none !important;
+}
+
+/* --- Hide action verbs, restyle read-more --- */
+
+.action-verb {
+    display: none !important;
+}
+
+.read-more {
+    display: inline;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: var(--link-color);
+    text-decoration: underline;
+    background-image: none;
+    gap: 0;
+}
+
+.read-more:hover {
+    color: var(--link-hover);
+    background-color: var(--accent-teal-light);
+    background-image: none;
+    border: none;
+}
+
+.read-more .codicon {
+    display: none !important;
+}
+
+/* --- Body & background --- */
+
+body {
+    background-color: var(--bg-primary);
+    background-image:
+        linear-gradient(45deg, #c8c4bc 25%, transparent 25%),
+        linear-gradient(-45deg, #c8c4bc 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #c8c4bc 75%),
+        linear-gradient(-45deg, transparent 75%, #c8c4bc 75%);
+    background-size: 4px 4px;
+    padding: 10px;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+}
+
+/* --- Page frame --- */
+
+.page-frame {
+    max-width: 960px;
+    background: var(--bg-content);
+    border: 3px outset #e0e0e0;
+    padding: 0;
+}
+
+/* --- Navigation --- */
+
+.navbar {
+    background: var(--bg-navbar);
+    padding: 6px 12px;
+    border-top: 2px solid var(--border-light);
+    border-bottom: 2px solid var(--border-dark);
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+}
+
+.site-prompt {
+    color: var(--link-color);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.site-prompt:hover {
+    color: var(--link-hover);
+}
+
+.nav-links {
+    gap: 0;
+}
+
+.nav-links a {
+    color: var(--link-color);
+    text-decoration: underline;
+    padding: 2px 6px;
+}
+
+.nav-links a:hover {
+    color: var(--link-hover);
+    background: var(--accent-teal-light);
+}
+
+/* Pipe separators between nav links */
+.nav-links a + a::before {
+    content: " | ";
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-right: 6px;
+}
+
+.nav-spacer {
+    display: none;
+}
+
+/* --- Picker button in 90s mode: hide codicon, show label --- */
+
+#theme-picker {
+    border: 2px outset #c0c0c0 !important;
+    background: var(--bg-navbar) !important;
+    color: var(--text-primary) !important;
+    font-family: Tahoma, Arial, sans-serif !important;
+    border-radius: 0 !important;
+}
+
+#theme-picker:hover {
+    border-style: inset !important;
+}
+
+/* --- Links --- */
+
+a {
+    color: var(--link-color);
+    text-decoration: underline;
+    background-image: none;
+    background-size: unset;
+}
+
+a:visited {
+    color: var(--link-visited);
+}
+
+a:hover {
+    color: var(--link-hover);
+    background: var(--accent-teal-light);
+    background-image: none;
+    background-size: unset;
+}
+
+a:active {
+    color: var(--accent-teal-dark);
+}
+
+/* --- Headings --- */
+
+h1, h2, h3, h4 {
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+/* --- Content area --- */
+
+.content {
+    padding: 16px 20px;
+}
+
+/* --- Article cards --- */
+
+.article-card {
+    margin-bottom: 16px;
+    padding: 0;
+    border-bottom: 1px dashed var(--border-dark);
+}
+
+.article-card:last-of-type {
+    border-bottom: none;
+}
+
+.article-card h3 a {
+    color: var(--link-color);
+    text-decoration: underline;
+    background-image: none;
+}
+
+.article-card h3 a:hover {
+    color: var(--link-hover);
+    background: var(--accent-teal-light);
+}
+
+.article-meta {
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.article-meta .meta-date {
+    color: var(--text-secondary);
+}
+
+.article-meta .meta-category {
+    color: var(--link-color);
+}
+
+.article-meta .meta-category:hover {
+    color: var(--link-hover);
+}
+
+/* --- Single article --- */
+
+.single-article header {
+    border-bottom: 2px solid var(--accent-teal);
+}
+
+/* --- Code --- */
+
+code {
+    font-family: "Courier New", Courier, monospace;
+    background: var(--code-bg);
+    border: 1px solid #e0e0e0;
+    border-radius: 0;
+    font-size: 0.95em;
+}
+
+.highlight,
+pre {
+    background: var(--code-bg);
+    border: none;
+    border-radius: 0;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* --- Tag badges --- */
+
+.tag-badge {
+    background: var(--accent-teal);
+    color: white !important;
+    border: 2px outset #00a0a0;
+    border-radius: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 0.85em;
+}
+
+.tag-badge:hover {
+    background: var(--accent-teal-dark);
+    color: white !important;
+    border-color: #004040;
+    background-image: none;
+}
+
+.article-tags {
+    border-top: 1px dashed var(--border-dark);
+}
+
+/* --- Tables --- */
+
+.article-body table th {
+    background: var(--accent-teal);
+    color: white;
+    border: 1px solid var(--accent-teal-dark);
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.article-body table td {
+    border: 1px solid #ddd;
+}
+
+.article-body table tr:hover td {
+    background: var(--accent-teal-light);
+}
+
+/* --- Archives table --- */
+
+.archives-table {
+    border: 1px solid #ccc;
+}
+
+.archives-table thead th {
+    background: var(--accent-teal);
+    color: white;
+    font-family: Tahoma, Arial, sans-serif;
+    border-bottom: none;
+}
+
+.archives-table tbody tr:hover td {
+    background: var(--accent-teal-light);
+}
+
+/* --- Blockquote --- */
+
+.article-body blockquote {
+    border-left: 3px solid var(--accent-teal);
+    background: var(--accent-teal-light);
+    color: var(--text-primary);
+}
+
+/* --- Pagination --- */
+
+.pagination {
+    font-family: "Courier New", Courier, monospace;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 2px outset #c0c0c0;
+    background: var(--bg-navbar);
+    text-decoration: none;
+    margin: 0 2px;
+    color: var(--text-primary);
+    background-image: none;
+}
+
+.pagination a:hover {
+    border-style: inset;
+    background: #e0e0e0;
+    background-image: none;
+}
+
+/* --- Footer --- */
+
+.site-footer {
+    background: var(--bg-navbar);
+    border-top: 2px solid var(--border-light);
+    font-family: Tahoma, Arial, sans-serif;
+    color: var(--text-secondary);
+}
+
+/* --- Listing pages --- */
+
+.listing-list li {
+    border-bottom: none;
+}
+
+.listing-list li::before {
+    content: "\25BA ";
+    color: var(--accent-teal);
+    font-size: 0.8em;
+}
+
+/* --- Image borders --- */
+
+.article-body img {
+    border: 1px solid var(--border-dark);
+    border-radius: 0;
+}
+
+/* --- Mermaid: teal vars applied via JS, but fix bg --- */
+
+pre.mermaid {
+    background: transparent;
+    border: none;
+}
+
+/* --- Mobile --- */
+
+@media (max-width: 700px) {
+    body {
+        padding: 4px;
+    }
+
+    .content {
+        padding: 12px;
+    }
+}

@@ -1,0 +1,75 @@
+/* ============================================================
+   90s theme Pygments — teal-harmonized syntax highlighting
+   Overrides CC pygments when 90s site-theme is active
+   ============================================================ */
+
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f5f5f5; }
+.highlight .c   { color: #5f8787; font-style: italic }  /* Comments — muted teal */
+.highlight .err { color: #8b4040 }                        /* Error */
+.highlight .k   { color: #006060; font-weight: bold }    /* Keywords — dark teal */
+.highlight .ch  { color: #5f8787; font-style: italic }
+.highlight .cm  { color: #5f8787; font-style: italic }
+.highlight .cp  { color: #5f8787 }
+.highlight .cpf { color: #5f8787; font-style: italic }
+.highlight .c1  { color: #5f8787; font-style: italic }
+.highlight .cs  { color: #5f8787; font-weight: bold }
+.highlight .gd  { color: #8b4040 }
+.highlight .ge  { font-style: italic }
+.highlight .ges { font-weight: bold; font-style: italic }
+.highlight .gr  { color: #8b4040 }
+.highlight .gh  { color: #005050; font-weight: bold }
+.highlight .gi  { color: #006060 }
+.highlight .go  { color: #555555 }
+.highlight .gp  { color: #5f8787; font-weight: bold }
+.highlight .gs  { font-weight: bold }
+.highlight .gu  { color: #5f8787; font-weight: bold }
+.highlight .gt  { color: #8b4040 }
+.highlight .kc  { color: #006060; font-weight: bold }
+.highlight .kd  { color: #006060; font-weight: bold }
+.highlight .kn  { color: #006060; font-weight: bold }
+.highlight .kp  { color: #006060 }
+.highlight .kr  { color: #006060; font-weight: bold }
+.highlight .kt  { color: #007070 }
+.highlight .m   { color: #4a7a7a }
+.highlight .s   { color: #7a4f2a }
+.highlight .na  { color: #4a7a7a }
+.highlight .nb  { color: #007070 }
+.highlight .nc  { color: #005050; font-weight: bold }
+.highlight .nd  { color: #5f8787 }
+.highlight .nf  { color: #004040 }
+.highlight .fm  { color: #004040 }
+.highlight .ni  { color: #555555 }
+.highlight .ne  { color: #8b4040; font-weight: bold }
+.highlight .nn  { color: #005050 }
+.highlight .no  { color: #006060 }
+.highlight .nt  { color: #006060; font-weight: bold }
+.highlight .ow  { font-weight: bold }
+.highlight .o   { color: #555555 }
+.highlight .p   { color: #333333 }
+.highlight .w   { color: #bbbbbb }
+.highlight .mb  { color: #4a7a7a }
+.highlight .mf  { color: #4a7a7a }
+.highlight .mh  { color: #4a7a7a }
+.highlight .mi  { color: #4a7a7a }
+.highlight .mo  { color: #4a7a7a }
+.highlight .sa  { color: #7a4f2a }
+.highlight .sb  { color: #7a4f2a }
+.highlight .sc  { color: #7a4f2a }
+.highlight .dl  { color: #7a4f2a }
+.highlight .sd  { color: #5f8787; font-style: italic }
+.highlight .s2  { color: #7a4f2a }
+.highlight .se  { color: #7a4f2a }
+.highlight .sh  { color: #7a4f2a }
+.highlight .si  { color: #7a4f2a; font-weight: bold }
+.highlight .sx  { color: #7a4f2a }
+.highlight .sr  { color: #007070 }
+.highlight .s1  { color: #7a4f2a }
+.highlight .ss  { color: #7a4f2a }
+.highlight .bp  { color: #007070 }
+.highlight .il  { color: #4a7a7a }

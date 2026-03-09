@@ -20,6 +20,9 @@
         var t = localStorage.getItem('theme');
         if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', t);
+
+        var st = localStorage.getItem('site-theme') || 'cc';
+        document.documentElement.setAttribute('data-site-theme', st);
     })();
     </script>
 
@@ -28,8 +31,20 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@vscode/codicons/dist/codicon.css">
 
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments.css">
+    <link id="css-cc" rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
+    <link id="css-cc-pygments" rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments.css">
+    <link id="css-90s" rel="stylesheet" href="{{ SITEURL }}/theme/css/style-90s.css" disabled>
+    <link id="css-90s-pygments" rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments-90s.css" disabled>
+    <script>
+    (function() {
+        if (localStorage.getItem('site-theme') === '90s') {
+            document.getElementById('css-cc').disabled = true;
+            document.getElementById('css-cc-pygments').disabled = true;
+            document.getElementById('css-90s').disabled = false;
+            document.getElementById('css-90s-pygments').disabled = false;
+        }
+    })();
+    </script>
     {% if FEED_ALL_ATOM %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed">
     {% endif %}
@@ -112,6 +127,7 @@
                 {% endfor %}
             </div>
             <div class="nav-spacer"></div>
+            <button id="theme-picker" aria-label="Switch site theme"><i class="codicon codicon-paintcan"></i><span class="picker-label">90s</span></button>
             <button id="theme-toggle" aria-label="Toggle theme"><i class="codicon codicon-color-mode"></i></button>
         </nav>
 

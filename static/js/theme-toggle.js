@@ -74,6 +74,47 @@
         setTheme(getTheme() === 'dark' ? 'light' : 'dark');
     });
 
+    // --- Site theme picker (CC ↔ 90s) ---
+    var picker = document.getElementById('theme-picker');
+    if (picker) {
+        var pickerLabel = picker.querySelector('.picker-label');
+
+        function getSiteTheme() {
+            return localStorage.getItem('site-theme') || 'cc';
+        }
+
+        function applySiteTheme(st) {
+            var ccCss = document.getElementById('css-cc');
+            var ccPyg = document.getElementById('css-cc-pygments');
+            var nineCss = document.getElementById('css-90s');
+            var ninePyg = document.getElementById('css-90s-pygments');
+
+            if (st === '90s') {
+                ccCss.disabled = true;
+                ccPyg.disabled = true;
+                nineCss.disabled = false;
+                ninePyg.disabled = false;
+                if (pickerLabel) pickerLabel.textContent = 'CC';
+            } else {
+                ccCss.disabled = false;
+                ccPyg.disabled = false;
+                nineCss.disabled = true;
+                ninePyg.disabled = true;
+                if (pickerLabel) pickerLabel.textContent = '90s';
+            }
+
+            document.documentElement.setAttribute('data-site-theme', st);
+            localStorage.setItem('site-theme', st);
+        }
+
+        // Apply on load
+        applySiteTheme(getSiteTheme());
+
+        picker.addEventListener('click', function () {
+            applySiteTheme(getSiteTheme() === 'cc' ? '90s' : 'cc');
+        });
+    }
+
     // Listen for OS preference changes
     var mq = window.matchMedia('(prefers-color-scheme: dark)');
     mq.addEventListener('change', function (e) {

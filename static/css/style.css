@@ -156,6 +156,38 @@ a.site-prompt {
     flex: 1;
 }
 
+/* --- Theme picker --- */
+
+#theme-picker {
+    background: none;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    line-height: 1;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#theme-picker:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+#theme-picker .codicon {
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.picker-label {
+    vertical-align: middle;
+}
+
 #theme-toggle {
     background: none;
     border: 1px solid var(--border-subtle);
