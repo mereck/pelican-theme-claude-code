@@ -77,6 +77,14 @@
     --table-hover-bg: #e0f0f0;
 }
 
+/* --- Base reset (CC stylesheet is disabled, so we need our own) --- */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    animation: none !important;
+    transition: none !important;
+}
+
 /* --- Hide all codicons --- */
 
 .codicon {
@@ -91,11 +99,6 @@
 
 .typewriter-cursor {
     display: none !important;
-}
-
-*, *::before, *::after {
-    animation: none !important;
-    transition: none !important;
 }
 
 /* --- Hide dark/light toggle (90s is single-mode) --- */
@@ -145,6 +148,7 @@ body {
         linear-gradient(45deg, transparent 75%, #c8c4bc 75%),
         linear-gradient(-45deg, transparent 75%, #c8c4bc 75%);
     background-size: 4px 4px;
+    margin: 0;
     padding: 10px;
     font-family: Tahoma, Arial, sans-serif;
     font-size: 16px;
@@ -158,14 +162,21 @@ body {
 
 .page-frame {
     max-width: 960px;
+    margin: 0 auto;
     background: var(--bg-content);
     border: 3px outset #e0e0e0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* --- Navigation --- */
 
 .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: var(--bg-navbar);
     padding: 6px 12px;
     border-top: 2px solid var(--border-light);
@@ -173,7 +184,6 @@ body {
     font-family: Tahoma, Arial, sans-serif;
     font-size: 14px;
     text-align: center;
-    justify-content: center;
     gap: 0;
     flex-wrap: wrap;
 }
@@ -189,7 +199,10 @@ body {
 }
 
 .nav-links {
+    display: flex;
+    align-items: center;
     gap: 0;
+    flex-wrap: wrap;
 }
 
 .nav-links a {
@@ -257,11 +270,18 @@ a:active {
 
 h1, h2, h3, h4 {
     font-family: Tahoma, Arial, sans-serif;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
 }
+
+h1 { font-size: 1.6em; }
+h2 { font-size: 1.4em; }
+h3 { font-size: 1.2em; }
 
 /* --- Content area --- */
 
 .content {
+    flex: 1;
     padding: 16px 20px;
 }
 
@@ -269,8 +289,22 @@ h1, h2, h3, h4 {
 
 .article-card {
     margin-bottom: 16px;
-    padding: 0;
+    padding: 16px 0;
     border-bottom: 1px dashed var(--border-dark);
+}
+
+.article-card h3 {
+    margin: 0 0 4px 0;
+}
+
+.article-summary {
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.article-meta .codicon {
+    display: none !important;
 }
 
 .article-card:last-of-type {
@@ -307,7 +341,32 @@ h1, h2, h3, h4 {
 /* --- Single article --- */
 
 .single-article header {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
     border-bottom: 2px solid var(--accent-teal);
+}
+
+.single-article header h1 {
+    margin-top: 0;
+}
+
+.article-body {
+    line-height: 1.7;
+}
+
+.article-body p {
+    margin: 1em 0;
+}
+
+.article-body img {
+    max-width: 100%;
+    height: auto;
+}
+
+.article-body table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
 }
 
 /* --- Code --- */
@@ -325,20 +384,43 @@ pre {
     background: var(--code-bg);
     border: none;
     border-radius: 0;
+    padding: 12px;
+    overflow-x: auto;
     font-family: "Courier New", Courier, monospace;
     font-size: 1em;
     line-height: 1.5;
+    margin: 1em 0;
+}
+
+.highlight pre {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+}
+
+.highlight code,
+pre code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: inherit;
 }
 
 /* --- Tag badges --- */
 
 .tag-badge {
+    display: inline-block;
     background: var(--accent-teal);
     color: white !important;
+    padding: 2px 8px;
+    margin: 2px;
     border: 2px outset #00a0a0;
     border-radius: 0;
     font-family: Tahoma, Arial, sans-serif;
     font-size: 0.85em;
+    text-decoration: none;
+    background-image: none;
 }
 
 .tag-badge:hover {
@@ -421,14 +503,45 @@ pre {
 
 .site-footer {
     background: var(--bg-navbar);
+    padding: 10px 16px;
     border-top: 2px solid var(--border-light);
     font-family: Tahoma, Arial, sans-serif;
+    font-size: 0.85em;
     color: var(--text-secondary);
+    text-align: center;
+    margin-top: auto;
+}
+
+.site-footer p {
+    margin: 4px 0;
+}
+
+.powered-by {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+}
+
+/* --- Tag cloud --- */
+
+.tag-cloud {
+    line-height: 2.2;
+}
+
+/* --- Content title (category/tag/author pages) --- */
+
+.content h2 {
+    margin-top: 0;
 }
 
 /* --- Listing pages --- */
 
+.listing-list {
+    list-style: none;
+    padding: 0;
+}
+
 .listing-list li {
+    padding: 4px 0;
     border-bottom: none;
 }
 
