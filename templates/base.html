@@ -59,6 +59,7 @@
         window.mermaid = mermaid;
 
         var theme = document.documentElement.getAttribute('data-theme') || 'dark';
+        var siteTheme = document.documentElement.getAttribute('data-site-theme') || 'cc';
 
         var darkVars = {
             primaryColor: '#2e2f3a',
@@ -98,10 +99,30 @@
             labelBoxBorderColor: '#c2410c'
         };
 
+        var ninetyVars = {
+            primaryColor: '#e0f0f0',
+            primaryBorderColor: '#008080',
+            primaryTextColor: '#000000',
+            lineColor: '#008080',
+            secondaryColor: '#f5f5f5',
+            tertiaryColor: '#ffffff',
+            noteBkgColor: '#e0f0f0',
+            noteBorderColor: '#008080',
+            actorBkg: '#e0f0f0',
+            actorBorder: '#008080',
+            actorTextColor: '#000000',
+            activationBkgColor: '#c0c0c0',
+            activationBorderColor: '#008080',
+            signalColor: '#008080',
+            labelBoxBkgColor: '#e0f0f0',
+            labelBoxBorderColor: '#008080'
+        };
+
+        var vars = siteTheme === '90s' ? ninetyVars : (theme === 'dark' ? darkVars : lightVars);
         mermaid.initialize({
             startOnLoad: false,
             theme: 'base',
-            themeVariables: theme === 'dark' ? darkVars : lightVars
+            themeVariables: vars
         });
 
         // Store source before rendering, then run

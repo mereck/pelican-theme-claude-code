@@ -9,10 +9,10 @@
     function setTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
-        reRenderMermaid(theme);
+        reRenderMermaid(theme, null);
     }
 
-    function reRenderMermaid(theme) {
+    function reRenderMermaid(theme, siteTheme) {
         if (typeof window.mermaid === 'undefined') return;
 
         var diagrams = document.querySelectorAll('.mermaid[data-mermaid-source]');
@@ -56,6 +56,28 @@
             labelBoxBorderColor: '#c2410c'
         };
 
+        var ninetyVars = {
+            primaryColor: '#e0f0f0',
+            primaryBorderColor: '#008080',
+            primaryTextColor: '#000000',
+            lineColor: '#008080',
+            secondaryColor: '#f5f5f5',
+            tertiaryColor: '#ffffff',
+            noteBkgColor: '#e0f0f0',
+            noteBorderColor: '#008080',
+            actorBkg: '#e0f0f0',
+            actorBorder: '#008080',
+            actorTextColor: '#000000',
+            activationBkgColor: '#c0c0c0',
+            activationBorderColor: '#008080',
+            signalColor: '#008080',
+            labelBoxBkgColor: '#e0f0f0',
+            labelBoxBorderColor: '#008080'
+        };
+
+        if (!siteTheme) siteTheme = localStorage.getItem('site-theme') || 'cc';
+        var vars = siteTheme === '90s' ? ninetyVars : (theme === 'dark' ? darkVars : lightVars);
+
         diagrams.forEach(function (el) {
             el.removeAttribute('data-processed');
             el.innerHTML = el.getAttribute('data-mermaid-source');
@@ -64,7 +86,7 @@
         window.mermaid.initialize({
             startOnLoad: false,
             theme: 'base',
-            themeVariables: theme === 'dark' ? darkVars : lightVars
+            themeVariables: vars
         });
 
         window.mermaid.run();
@@ -105,6 +127,7 @@
 
             document.documentElement.setAttribute('data-site-theme', st);
             localStorage.setItem('site-theme', st);
+            reRenderMermaid(getTheme(), st);
         }
 
         // Apply on load
