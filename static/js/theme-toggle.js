@@ -146,9 +146,9 @@
 
     // --- Random action verbs (topic-aware) ---
     var tagVerbs = {
-        'threading':    ['Synchronizing', 'Signaling', 'Joining', 'Scheduling', 'Blocking'],
-        'concurrency':  ['Synchronizing', 'Signaling', 'Joining', 'Scheduling', 'Locking'],
-        'property-based testing': ['Shrinking', 'Generating', 'Fuzzing', 'Asserting', 'Falsifying'],
+        'threading':    ['Synchronizing', 'Signaling', 'Joining', 'Scheduling', 'Dispatching'],
+        'concurrency':  ['Synchronizing', 'Signaling', 'Joining', 'Scheduling', 'Dispatching'],
+        'property-based testing': ['Shrinking', 'Generating', 'Fuzzing', 'Asserting', 'Sampling'],
         'claude code':  ['Verifying', 'Reviewing', 'Auditing', 'Evaluating', 'Inspecting'],
         'n-tier architecture':    ['Refactoring', 'Layering', 'Decoupling', 'Extracting', 'Separating'],
         'monolithic architecture': ['Refactoring', 'Layering', 'Decoupling', 'Extracting', 'Separating'],
