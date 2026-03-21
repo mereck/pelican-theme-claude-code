@@ -41,6 +41,10 @@
     --tag-text: #ffffff;
     --table-header-bg: var(--accent-teal);
     --table-hover-bg: var(--accent-teal-light);
+    --dunbar-fill-1: rgba(0, 128, 128, 0.08);
+    --dunbar-fill-2: rgba(0, 128, 128, 0.14);
+    --dunbar-fill-3: rgba(0, 128, 128, 0.22);
+    --dunbar-fill-4: rgba(0, 128, 128, 0.35);
 }
 
 /* Kill light-mode variables — 90s is single-mode */
@@ -75,6 +79,10 @@
     --tag-text: #ffffff;
     --table-header-bg: #008080;
     --table-hover-bg: #e0f0f0;
+    --dunbar-fill-1: rgba(0, 128, 128, 0.08);
+    --dunbar-fill-2: rgba(0, 128, 128, 0.14);
+    --dunbar-fill-3: rgba(0, 128, 128, 0.22);
+    --dunbar-fill-4: rgba(0, 128, 128, 0.35);
 }
 
 /* --- Base reset (CC stylesheet is disabled, so we need our own) --- */
