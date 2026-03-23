@@ -127,6 +127,14 @@
 
             document.documentElement.setAttribute('data-site-theme', st);
             localStorage.setItem('site-theme', st);
+
+            var linkCC = document.querySelector('.theme-link-cc');
+            var link90s = document.querySelector('.theme-link-90s');
+            if (linkCC && link90s) {
+                linkCC.style.display = st === '90s' ? 'none' : '';
+                link90s.style.display = st === '90s' ? '' : 'none';
+            }
+
             reRenderMermaid(getTheme(), st);
         }
 
